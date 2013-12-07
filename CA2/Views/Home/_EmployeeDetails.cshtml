@@ -1,13 +1,18 @@
 ﻿@model IEnumerable<CA2.Employee>
 
-<table id="tblCusts" class="table table-striped table-condensed table-hover" 
-       style="table-layout: fixed; word-wrap: break-word">
+
+@using (Ajax.BeginForm("ShowOrders", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "tbl" },
+    new {@class = "form-horizontal", @role = "form", id="form"}))
+    {
+
+<table id="tblCusts" class="table table-condensed" 
+       style="table-layout: fixed; width:280px; word-wrap: break-word; position:fixed">
     @* Could use white-space:nowrap to avoid line wrap*@
     <thead>
         <tr>
-            <th style="width:60%">@Html.DisplayNameFor(c => c.FirstOrDefault().FirstName)</th>
-            <th style="width:35%">@Html.DisplayNameFor(c => c.FirstOrDefault().LastName)</th>
-            <th style="width:5%"></th>
+            <th style="width:90%">Employee Details</th>
+            @*<th style="width:35%">Boss</th>
+            <th style="width:5%"></th>*@
         </tr>
     </thead>
     <tbody>
@@ -15,11 +20,45 @@
         {
             <tr onclick="listOrders('@emp.FirstName');" style="cursor:pointer">
                 <td>
-                    @String.Format("{0:d}",emp.FirstName)
+                    @String.Format("Name: {0} {1}",emp.FirstName, emp.LastName)
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    @String.Format("Boss: {0} Make this a Name!! :)",emp.ReportsTo)
+                    @*@Html.DisplayFor(modelItem => (emp.ReportsTo))*@
+                </td>
+             </tr>
+            <tr>
+                <td>
+                    @String.Format("Phone: {0}",emp.HomePhone)
+                    @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => emp.FirstName)
+            </tr>
+            <tr>
+                <td>
+                    @String.Format("Region: {0}",emp.Region)
+                    @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
                 </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="width:90%">
+                        <img src="~/Content/images/mrBean.jpeg" />
+                        @*Preferrably the link would be stored in the photo column in the emploees table.*@
+                    </div>
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <div onclick="showOrders('@emp.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
+                    @*@Html.ActionLink("Show Orders", "ShowOrders", new { id=emp.EmployeeID }, new {@class="btn btn-info btn-xs"})*@
+                </td>
+            </tr>
+            <tr>
                 <td>
                     <label class="label label-info pull-right">@emp.Orders.Count</label>
                 </td>
@@ -27,6 +66,23 @@
         }
     </tbody>
 </table>
+    
+}
+
+
+<script>
+    function showOrders(id) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ShowOrders")',
+                data: { id: id },
+                success: function (data) {
+                    $('#tbl').html(data);
+                }
+        });
+        alert("Showing Orders");
+    }
+</script>
 
 
 @*<table>

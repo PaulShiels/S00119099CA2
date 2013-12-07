@@ -318,8 +318,10 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Home\_EmployeeDetails.cshtml" />
+    <Content Include="Views\Home\_EmployeesOrdersTaken.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
