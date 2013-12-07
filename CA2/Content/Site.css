@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.scroll
+{
+width:170px;
+height:70px;
+overflow-y:scroll;
+}
+

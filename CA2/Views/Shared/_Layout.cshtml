@@ -3,11 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
+    
 </head>
 <body class="background">
+    <div class="row">
+        <div class="col-md-6">
     <div class="container pageContainer sectionColor">
     <div class="bs-docs-example">
             <div class="tabbable tabs-left">
@@ -30,10 +35,12 @@
             </div> <!-- /tabbable -->
           </div>
         </div>  
+        </div>
 
     
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
 </body>
 </html>

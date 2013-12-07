@@ -31,3 +31,8 @@ C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Web.WebPages.Razor.xml
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\obj\Debug\CA2.csprojResolveAssemblyReference.cache
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\obj\Debug\CA2.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\obj\Debug\CA2.pdb
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.dll
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.Mvc.dll
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.xml
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.Mvc.pdb
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.Mvc.xml

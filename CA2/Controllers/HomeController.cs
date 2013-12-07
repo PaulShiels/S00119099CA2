@@ -26,6 +26,14 @@ namespace CA2.Controllers
             return View();
         }
 
+        public PartialViewResult EmployeeDetails ()//int id)
+        {
+            var details = from ed in db.Employees
+                          //where ed.EmployeeID == id
+                          select ed;
+            return PartialView("_EmployeeDetails", details);
+        }
+
         //
         // GET: /Home/Create
 
