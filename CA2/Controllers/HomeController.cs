@@ -34,12 +34,12 @@ namespace CA2.Controllers
             return PartialView("_EmployeeDetails", details);
         }
 
-        public ActionResult ShowOrders(int id)
+        public PartialViewResult ShowOrders(int id)
         {
             var orders = from o in db.Orders
                          where o.EmployeeID == id
                          select o;
-            return PartialView("_EmployeesOrdersTaken.cshtml", orders);
+            return PartialView("_EmployeesOrdersTaken", orders);
         }
 
         //
@@ -71,9 +71,9 @@ namespace CA2.Controllers
         //
         // GET: /Home/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit()//int id)
         {
-            return View();
+            return View("_Edit");
         }
 
         //

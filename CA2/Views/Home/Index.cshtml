@@ -26,14 +26,11 @@
     </script>
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div class="row">
 
     
 
-<div class="col-md-9">
+<div id="tblMain" class="col-md-9">
 
     @using (Ajax.BeginForm("EmployeeDetails", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "empDiv" },
     new {@class = "form-horizontal", @role = "form", id="form"}))
@@ -87,7 +84,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr onclick="listEmployees('@item.EmployeeID');" style="cursor:pointer">
+    <tr onclick="listEmployees('@item.EmployeeID');" style="cursor:pointer; max-width:50px">
         <td>
             @Html.DisplayFor(modelItem => item.CustomerID)
         </td>
@@ -104,7 +101,7 @@
                     <dd>@String.Format("{0},",item.ShippedDate)</dd>
                     <dd>@String.Format("{0},",item.ShipVia)</dd>
                     <dd>@String.Format("{0},",item.ShipAddress)</dd>
-                    <dd>@String.Format("{0},",item.ShipPostalCode)</dd>
+                    <dd>@String.Format("{0}.",item.ShipPostalCode)</dd>
                 </dl>
              </div>
         </td>
