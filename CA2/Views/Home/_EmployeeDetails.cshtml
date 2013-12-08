@@ -54,7 +54,7 @@
                     @using (Ajax.BeginForm("ShowOrders", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "tbl" },
                     new {@class = "form-horizontal", @role = "form", id="form"}))
                     {   
-                        <div onclick="showOrders('@emp.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
+                        <div id="btnShow" onclick="showOrders('@emp.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
                         @*@Html.ActionLink("Show Orders", "ShowOrders", new { id=emp.EmployeeID }, new {@class="btn btn-info btn-xs"})*@
                     }
                 </td>
@@ -72,16 +72,32 @@
 
 
 <script>
+    $("#btnShow").click(function () {
+        $("#tblMain").fadeOut("slow", function () { $("#tblMain").fadeIn(3000); });
+    });
+
+    //$(document).ready(function () {
+        
+    //    alert("faded");
+    //    //$("#tblCusts").addClass('box_rotate box_transition');
+    //    // Animation complete.
+    //});
+
+    
+</script>
+
+@*<script>
     function showOrders(id) {
         $.ajax({
             type: "POST",
             url: '@Url.Action("ShowOrders")',
-                data: { id: id },
-                success: function (data) {
-                    $('#tbl').html(data);
-                }
-        });    }
-</script>
+            data: { id: id },
+            success: function (data) {
+                $('#tbl').html(data);
+            }
+        });
+    }
+</script>*@
 
 
 @*<table>

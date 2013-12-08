@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
     @Scripts.Render("~/bundles/jquery")
@@ -15,13 +14,20 @@
     
     
 </head>
-<body class="background">
-    <div class="row">
+<body>
+    <div class="jumbotron">
         <div class="col-md-6">
-    <div class="container pageContainer sectionColor">
-    <div class="bs-docs-example">
-            <div class="tabbable tabs-left">
-              <ul class="nav nav-tabs">
+    <div class="container pageContainer sectionColor" style="font-size:15px">
+    <div>
+        @RenderBody()
+            
+          </div>
+        </div> 
+            </div>
+        </div>
+
+        @*<div class="tabbable tabs-left">*@
+              @*<ul class="nav nav-tabs">
                 <li class="active"><a href="#lA" data-toggle="tab">Section 1</a></li>
                 <li class=""><a href="#lB" data-toggle="tab">Section 2</a></li>
                 <li class=""><a href="#lC" data-toggle="tab">Section 3</a></li>
@@ -36,11 +42,8 @@
                 <div class="tab-pane" id="lC">
                   <p>What up girl, this is Section C.</p>
                 </div>
-              </div>
-            </div> <!-- /tabbable -->
-          </div>
-        </div>  
-        </div>
+              </div>*@
+            @*</div> <!-- /tabbable -->*@
 
 <script>
         $(function () {
