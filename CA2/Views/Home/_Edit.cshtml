@@ -65,9 +65,16 @@
             @Html.LabelFor(model => model.ShipVia)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ShipVia)
-            @Html.ValidationMessageFor(model => model.ShipVia)
+            <div class="form-group">
+            @*@Html.EditorFor(model => model.ShipVia)
+            @Html.ValidationMessageFor(model => model.ShipVia)*@
 
+            @Html.DropDownListFor(model => model.ShipVia,
+                (SelectList)ViewBag.ShipVia,
+                new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.ShipVia)
+                </div>
         </div>
 
         <div class="editor-label">
@@ -135,3 +142,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+

@@ -23,7 +23,9 @@
              <tr>
                 <td>
                     @String.Format("Boss: {0} Make this a Name!! :)", emp.ReportsTo)
-                    @*@Html.DisplayFor(modelItem => (emp.ReportsTo))*@
+                    @*@Html.DisplayFor(modelItem => @ViewBag.report)*@
+                    @*@String.Format("Boss: {0} {1}",@ViewBag.reportFname,@ViewBag.reportLname)*@
+                    @*@String.Format("Boss: {0}",@ViewBag.reportFname)*@
                 </td>
              </tr>
             <tr>
@@ -72,6 +74,18 @@
 
 
 <script>
+
+    function showOrders(id) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ShowOrders")',
+            data: { id: id },
+            success: function (data) {
+                $('#tbl').html(data);
+            }
+        });
+    }
+
     $("#btnShow").click(function () {
         $("#tblMain").fadeOut("slow", function () { $("#tblMain").fadeIn(3000); });
     });
@@ -85,19 +99,6 @@
 
     
 </script>
-
-@*<script>
-    function showOrders(id) {
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("ShowOrders")',
-            data: { id: id },
-            success: function (data) {
-                $('#tbl').html(data);
-            }
-        });
-    }
-</script>*@
 
 
 @*<table>

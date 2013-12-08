@@ -35,10 +35,20 @@ namespace CA2.Controllers
 
         public PartialViewResult EmployeeDetails (int id)
         {
-            
             var details = from ed in db.Employees
                           where ed.EmployeeID == id
                           select ed;
+
+            ViewBag.reportFname = (from r in db.Employees
+                                   //join o in db.Orders on r.ReportsTo equals o.EmployeeID
+                                   where r.ReportsTo == id
+                                   select r.FirstName).FirstOrDefault();
+
+            //ViewBag.reportLname = (from o in db.Orders
+            //                       join b in db.Employees on o.EmployeeID equals b.ReportsTo
+            //                       where o.EmployeeID == id
+            //                       select b.LastName).FirstOrDefault();
+
             return PartialView("_EmployeeDetails", details);
         }
 
@@ -83,7 +93,15 @@ namespace CA2.Controllers
         {
             Order o = db.Orders.Find(id);
 
-            ViewBag.GenreId = new SelectList(db.Employees, "OrderId", "Name", o.OrderID);
+            var courier = from s in db.Orders
+                          join c in db.Shippers on s.ShipVia equals c.ShipperID
+                          select new
+                          {
+                              s.ShipVia,
+                              c.CompanyName
+                          };
+
+            ViewBag.ShipVia = new SelectList(courier.Distinct(), "ShipVia", "CompanyName");
             //ViewBag.ArtistId = new SelectList(db.Customers, "ArtistId", "Name", o.CustomerID);
 
             return (o == null) ? View() : View("_Edit", o);
