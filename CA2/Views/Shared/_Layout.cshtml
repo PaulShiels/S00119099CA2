@@ -4,10 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    
     
 </head>
 <body class="background">
@@ -37,10 +42,28 @@
         </div>  
         </div>
 
-    
+<script>
+        $(function () {
+        $("#dialog-modal").dialog({
+            autoOpen: false,
+            height: 280,
+            width: 400,
+            modal:true,
+            //show: {
+            //    effects: "shake",
+            //    duration: 100
+            //},
+            //hide: {
+            //    effect: "explode",
+            //    duration: 1000
+            //}
+        });
+        }); 
+    </script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
+   
     @RenderSection("scripts", required: false)
+
+        
 </body>
 </html>

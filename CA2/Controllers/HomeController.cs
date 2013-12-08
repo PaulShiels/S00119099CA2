@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,12 @@ namespace CA2.Controllers
     public class HomeController : Controller
     {
         NorthwindEntities db = new NorthwindEntities();
+        
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
         //
         // GET: /Home/
 
@@ -28,6 +35,7 @@ namespace CA2.Controllers
 
         public PartialViewResult EmployeeDetails (int id)
         {
+            
             var details = from ed in db.Employees
                           where ed.EmployeeID == id
                           select ed;
@@ -51,7 +59,7 @@ namespace CA2.Controllers
         }
 
         //
-        // POST: /Home/Create
+        // POST: /Home4/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -71,27 +79,29 @@ namespace CA2.Controllers
         //
         // GET: /Home/Edit/5
 
-        public ActionResult Edit()//int id)
+        public ActionResult Edit(int id)
         {
-            return View("_Edit");
+            Order o = db.Orders.Find(id);
+
+            ViewBag.GenreId = new SelectList(db.Employees, "OrderId", "Name", o.OrderID);
+            //ViewBag.ArtistId = new SelectList(db.Customers, "ArtistId", "Name", o.CustomerID);
+
+            return (o == null) ? View() : View("_Edit", o);
         }
 
         //
         // POST: /Home/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Order o) //int id, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(o).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(o);
         }
 
         //

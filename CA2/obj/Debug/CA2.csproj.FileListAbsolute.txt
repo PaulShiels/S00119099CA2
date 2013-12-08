@@ -1,9 +1,6 @@
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\CA2.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\CA2.pdb
-C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Antlr3.Runtime.dll
-C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\EntityFramework.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Newtonsoft.Json.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Net.Http.Formatting.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Web.Http.dll
@@ -16,7 +13,6 @@ C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Web.WebPages.Deployment.
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Web.WebPages.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Web.WebPages.Razor.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\WebGrease.dll
-C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Antlr3.Runtime.pdb
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Newtonsoft.Json.xml
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\System.Web.Optimization.xml
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\EntityFramework.xml
@@ -32,7 +28,8 @@ C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\obj\Debug\CA2.csprojResolveAssembly
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\obj\Debug\CA2.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\obj\Debug\CA2.pdb
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.dll
-C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.Mvc.dll
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.xml
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.Mvc.pdb
 C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\PagedList.Mvc.xml
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Antlr3.Runtime.dll
+C:\Users\Paul\Documents\IT\Year3\RAD\CA2\CA2\bin\Antlr3.Runtime.xml

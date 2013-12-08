@@ -4,27 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-@section scripts
-{
-    <script>
-        /* Handles listing of Orders when clicking on Customer */
-        
-        function listEmployees(id) {
-            $('#tbl').on('click', 'tr', function () {
-                $('#form').submit();
-            });
 
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("EmployeeDetails")',
-                data: { id: id },
-                success: function (data) {
-                    $('#empDiv').html(data);
-                }
-            });
-        };
-    </script>
-}
+
+
 
 <div class="row">
 
@@ -138,7 +120,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
             @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+            <div id="btn_delete" onclick="btnDelete()" class="btn btn-primary">Delete</div>
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.OrderID })*@
         </td>
     </tr>
 }
@@ -154,3 +137,50 @@
 </div>
 </div>
 
+<div id="dialog-modal" title="Really??" class="modal-body">
+    
+</div>
+
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
+
+
+
+<script>    
+        function btnDelete() {            
+            $("#dialog-modal").dialog("open");
+            //alert("Clicked");
+        };
+
+        function listEmployees(id) {
+            $('#tbl').on('click', 'tr', function () {
+                $('#form').submit();
+            });
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EmployeeDetails")',
+                data: { id: id },
+                success: function (data) {
+                    $('#empDiv').html(data);
+                }
+            });
+        };
+    
+        //$("#btn_delete").click(function () 
+        
+    </script>
