@@ -330,6 +330,7 @@
     <Content Include="Views\Home\_EmployeeDetails.cshtml" />
     <Content Include="Views\Home\_EmployeesOrdersTaken.cshtml" />
     <Content Include="Views\Home\_Edit.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\" />

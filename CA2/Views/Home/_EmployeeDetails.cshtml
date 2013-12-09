@@ -22,10 +22,13 @@
             </tr>
              <tr>
                 <td>
-                    @String.Format("Boss: {0} Make this a Name!! :)", emp.ReportsTo)
+                    @*@String.Format("Boss: {0} Make this a Name!! :)", emp.ReportsTo)*@
                     @*@Html.DisplayFor(modelItem => @ViewBag.report)*@
                     @*@String.Format("Boss: {0} {1}",@ViewBag.reportFname,@ViewBag.reportLname)*@
                     @*@String.Format("Boss: {0}",@ViewBag.reportFname)*@
+                    
+                    
+                    @ViewBag.reportFname
                 </td>
              </tr>
             <tr>
@@ -37,7 +40,7 @@
             </tr>
             <tr>
                 <td>
-                    @String.Format("Region: {0}",emp.Region))
+                    @String.Format("City: {0}",emp.City)
                     @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
                 </td>
                 <td>
@@ -46,7 +49,7 @@
                 <td>
                     <div style="width:90%">
                         <img src="~/Content/images/mrBean.jpeg" />
-                        @*Preferrably the link would be stored in the photo column in the emploees table.*@
+                        @*Preferrably the link would be stored in the photo column in the employees table.*@
                     </div>
                 </td>
                 <td>
@@ -59,11 +62,6 @@
                         <div id="btnShow" onclick="showOrders('@emp.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
                         @*@Html.ActionLink("Show Orders", "ShowOrders", new { id=emp.EmployeeID }, new {@class="btn btn-info btn-xs"})*@
                     }
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="label label-info pull-right">@emp.Orders.Count</label>
                 </td>
             </tr>
         }

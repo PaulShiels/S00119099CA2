@@ -66,7 +66,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr id="tblRow" onclick="listEmployees('@item.EmployeeID');" style="cursor:pointer; max-width:50px">
+    <tr id="tblRow" onclick="listEmployees('@item.EmployeeID');" style="cursor:pointer; max-width:50px; height:10px">
         <td>
             @Html.DisplayFor(modelItem => item.CustomerID)
         </td>
@@ -81,14 +81,19 @@
                 @*@String.Format("{0}, \r\n{1}, \r\n {2}, {3}",item.ShippedDate,item.ShipVia,item.ShipAddress,item.ShipPostalCode)*@
                 <dl>
                     <dd>@String.Format("{0},",item.ShippedDate)</dd>
-                    <dd>@String.Format("{0},",item.ShipVia)</dd>
+                    <dd>@String.Format("{0},",item.ShipName)</dd>
                     <dd>@String.Format("{0},",item.ShipAddress)</dd>
                     <dd>@String.Format("{0}.",item.ShipPostalCode)</dd>
                 </dl>
              </div>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.ContactName)
+        <td style="font-size:12px">
+            @*@Html.DisplayFor(modelItem => item.Customer.CompanyName)*@
+            <dl>
+                    <dd>@String.Format("{0},",item.Customer.ContactName)</dd>
+                    <dd>from</dd>
+                    <dd>@String.Format("{0},",item.Customer.CompanyName)</dd>
+                </dl>
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.ShippedDate)
@@ -119,9 +124,8 @@
         </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            <div id="btn_delete" onclick="btnDelete()" class="btn btn-primary">Delete</div>
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.OrderID })*@
+            @*<div id="btn_delete" onclick="btnDelete()" class="btn btn-primary">Delete</div>*@
+            @Html.ActionLink("Delete", "Delete", new { id = item.OrderID }, new { @class="btn btn-primary" })
         </td>
     </tr>
 }
@@ -132,7 +136,7 @@
     </div>
     
     <div class="col-md-3">
-    <div id="empDiv" style="width:300px">kejcnekjn</div>
+    <div id="empDiv" style="width:300px"></div>
 
 </div>
 </div>

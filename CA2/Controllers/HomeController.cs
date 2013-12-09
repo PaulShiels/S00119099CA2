@@ -35,8 +35,7 @@ namespace CA2.Controllers
 
         public PartialViewResult EmployeeDetails (int id)
         {
-            //Order o = db.Orders.Find(id);
-
+            Order o = db.Orders.Find(id);
             var details = from ed in db.Employees
                           where ed.EmployeeID == id
                           select ed;
@@ -44,7 +43,10 @@ namespace CA2.Controllers
             ViewBag.reportFname = (from r in db.Employees
                                    //join o in db.Orders on r.ReportsTo equals o.EmployeeID
                                    where r.ReportsTo == id
-                                   select r.FirstName).FirstOrDefault().Distinct();
+                                   select new
+                                   {
+                                       Boss = r.LastName
+                                   }).FirstOrDefault();
 
             //ViewBag.reportLname = (from o in db.Orders
             //                       join b in db.Employees on o.EmployeeID equals b.ReportsTo
@@ -93,7 +95,7 @@ namespace CA2.Controllers
 
         public ActionResult Edit(int id)
         {
-            
+            Order o = new Order();
 
             ViewBag.Shipper = (from s in db.Shippers
                                select new
@@ -134,25 +136,32 @@ namespace CA2.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            Order o = db.Orders.Find(id);
+            if (o == null)
+            {
+                return HttpNotFound();
+            }
+            return View(o);
         }
 
         //
         // POST: /Home/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
+            //try
+            //{
+                Order o = db.Orders.Find(id);
+                db.Orders.Remove(o);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
     }
 }
