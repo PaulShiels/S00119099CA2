@@ -30,10 +30,13 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.EmployeeID)
+            @Html.LabelFor(model => model.Employee)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EmployeeID)
+        <div class="editor-field" style="width:179px">
+        
+            @Html.DropDownListFor(model => model.EmployeeID,
+            new SelectList(ViewBag.Employee, "eID", "lName"),
+            new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.EmployeeID)
         </div>
 
@@ -64,17 +67,11 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.ShipVia)
         </div>
-        <div class="editor-field">
-            <div class="form-group">
-            @*@Html.EditorFor(model => model.ShipVia)
-            @Html.ValidationMessageFor(model => model.ShipVia)*@
-
+        <div class="editor-field" style="width:179px">          
             @Html.DropDownListFor(model => model.ShipVia,
-                (SelectList)ViewBag.ShipVia,
-                new { @class = "form-control" })
-
+            new SelectList(ViewBag.Shipper, "sID", "cName"),
+            new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ShipVia)
-                </div>
         </div>
 
         <div class="editor-label">
@@ -139,7 +136,7 @@
     </fieldset>
 }
 
-<div>
+<div class="btn-inverse">
     @Html.ActionLink("Back to List", "Index")
 </div>
 

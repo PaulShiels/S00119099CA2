@@ -35,6 +35,8 @@ namespace CA2.Controllers
 
         public PartialViewResult EmployeeDetails (int id)
         {
+            //Order o = db.Orders.Find(id);
+
             var details = from ed in db.Employees
                           where ed.EmployeeID == id
                           select ed;
@@ -42,7 +44,7 @@ namespace CA2.Controllers
             ViewBag.reportFname = (from r in db.Employees
                                    //join o in db.Orders on r.ReportsTo equals o.EmployeeID
                                    where r.ReportsTo == id
-                                   select r.FirstName).FirstOrDefault();
+                                   select r.FirstName).FirstOrDefault().Distinct();
 
             //ViewBag.reportLname = (from o in db.Orders
             //                       join b in db.Employees on o.EmployeeID equals b.ReportsTo
@@ -91,17 +93,22 @@ namespace CA2.Controllers
 
         public ActionResult Edit(int id)
         {
-            Order o = db.Orders.Find(id);
+            
 
-            var courier = from s in db.Orders
-                          join c in db.Shippers on s.ShipVia equals c.ShipperID
-                          select new
-                          {
-                              s.ShipVia,
-                              c.CompanyName
-                          };
+            ViewBag.Shipper = (from s in db.Shippers
+                               select new
+                               {
+                                   cName = s.CompanyName,
+                                   sID = s.ShipperID
+                               }).Distinct().ToList();
 
-            ViewBag.ShipVia = new SelectList(courier.Distinct(), "ShipVia", "CompanyName");
+            ViewBag.Employee = (from e in db.Employees
+                                select new
+                                {
+                                    lName = e.LastName, //string.Format("{0} {1}",e.FirstName, e.LastName),
+                                    eID = e.EmployeeID
+                                }).Distinct().ToList();
+            
             //ViewBag.ArtistId = new SelectList(db.Customers, "ArtistId", "Name", o.CustomerID);
 
             return (o == null) ? View() : View("_Edit", o);
