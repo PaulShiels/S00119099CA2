@@ -124,7 +124,7 @@
         </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }, new { @class="btn btn-primary" }) 
-            <div id="btn_delete" onclick="btnDelete()" style="margin-top: 10px;" class="btn btn-primary">Delete</div>
+            <div id="btn_delete" onclick="btnDelete(@item.OrderID)" style="margin-top:10px" class="btn btn-primary">Delete</div>
             @*@Html.ActionLink("Delete", "Delete", new { id = item.OrderID }, new { @class="btn btn-primary" })*@
         </td>
     </tr>
@@ -141,16 +141,32 @@
 </div>
 </div>
 
-<div id="dialog-modal" title="Really??" style="width:100px; height:150px; position:fixed; background-color:#b6ff00;">
-    @Html.ActionLink("Delete", "Delete", new { @class="btn btn-primary" })
+<div style="visibility:hidden" id="dialog-confirm" title="Are you sure?">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These order will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
 
 
-
 <script>    
-        function btnDelete() {            
-            $("#dialog-modal").dialog("open");
-            //alert("Clicked");
+    function btnDelete(id) {
+        $('#dialog-confirm').visible;
+        $("#dialog-confirm").dialog({
+            resizable: false,
+            height: 140,
+            modal: true,
+            buttons: {
+                "Delete Order": function (id) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("DeleteConfirmed")',
+                data: { id: id }
+                    });
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        
         };
 
         function listEmployees(id) {
@@ -169,6 +185,5 @@
             });
         };
     
-        //$("#btn_delete").click(function () 
         
     </script>
