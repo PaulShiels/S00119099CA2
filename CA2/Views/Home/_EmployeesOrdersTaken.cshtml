@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<CA2.Order>
 
-<h3>Orders taken by this Employee</h3>
 
 <table>
     <tr>
@@ -20,8 +19,8 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
+    <tr style="height:120px">
+        <td style="width:100px">
             @Html.DisplayFor(modelItem => item.CustomerID)
         </td>
         <td>
@@ -41,9 +40,9 @@
             @Html.DisplayFor(modelItem => item.ShipVia)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }, new { @class="btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID }, new { @class="btn btn-primary" })
+
         </td>
     </tr>
 }

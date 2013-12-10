@@ -64,7 +64,8 @@
         }); 
     </script>
 
-   
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui",  "~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/others")
     @RenderSection("scripts", required: false)
 
         

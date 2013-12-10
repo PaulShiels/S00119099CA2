@@ -45,6 +45,19 @@ namespace CA2
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/others").Include(
+                                "~/Content/bootstrap/js/bootstrap.js",
+                                "~/Scripts/jquery.dataTables.js",
+                                "~/Scripts/dataTables_bootstrap.js",
+                                "~/Scripts/bootstrap-dropdown.js",
+                                "~/Scripts/jquery.dataTables.columnFilter.js",
+                                "~/Scripts/Custom/CustomScript.js",
+                                "~/Scripts/jquery.validationEngine-en.js",
+                                "~/Scripts/jquery.validationEngine.js",
+                                "~/Scripts/angular.js"
+                                ));
         }
     }
 }

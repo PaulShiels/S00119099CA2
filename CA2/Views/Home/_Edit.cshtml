@@ -19,15 +19,7 @@
     <fieldset>
         <legend>Order</legend>
 
-        @Html.HiddenFor(model => model.OrderID)
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CustomerID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CustomerID)
-            @Html.ValidationMessageFor(model => model.CustomerID)
-        </div>
+        
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Employee)

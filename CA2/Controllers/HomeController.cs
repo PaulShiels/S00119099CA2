@@ -35,25 +35,18 @@ namespace CA2.Controllers
 
         public PartialViewResult EmployeeDetails (int id)
         {
-            Order o = db.Orders.Find(id);
+            Employee e = db.Employees.Find(id);
+
             var details = from ed in db.Employees
                           where ed.EmployeeID == id
                           select ed;
+            ViewBag.reportFname = "This is the Boss Man";
+            Employee BossMan = db.Employees.Find(e.ReportsTo);
 
-            ViewBag.reportFname = (from r in db.Employees
-                                   //join o in db.Orders on r.ReportsTo equals o.EmployeeID
-                                   where r.ReportsTo == id
-                                   select new
-                                   {
-                                       Boss = r.LastName
-                                   }).FirstOrDefault();
+            if (BossMan!=null)
+            ViewBag.reportFname =  string.Format("Boss: {0} {1}", BossMan.FirstName, BossMan.LastName);
 
-            //ViewBag.reportLname = (from o in db.Orders
-            //                       join b in db.Employees on o.EmployeeID equals b.ReportsTo
-            //                       where o.EmployeeID == id
-            //                       select b.LastName).FirstOrDefault();
-
-            return PartialView("_EmployeeDetails", details);
+            return PartialView("_EmployeeDetails", e);
         }
 
         public PartialViewResult ShowOrders(int id)
@@ -91,7 +84,7 @@ namespace CA2.Controllers
         }
 
         //
-        // GET: /Home/Edit/5
+        // GET: /Home//5
 
         public ActionResult Edit(int id)
         {

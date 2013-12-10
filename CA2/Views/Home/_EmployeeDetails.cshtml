@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CA2.Employee>
+﻿@model CA2.Employee
 
 
 
@@ -13,11 +13,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var emp in Model)
+@*        @foreach (var emp in Model)
         {
-            <tr onclick="listOrders('@emp.FirstName');" style="cursor:pointer">
+            *@<tr onclick="listOrders('@Model.FirstName');" style="cursor:pointer">
                 <td>
-                    @String.Format("Name: {0} {1}",emp.FirstName, emp.LastName)
+                    @String.Format("Name: {0} {1}",Model.FirstName, Model.LastName)
                 </td>
             </tr>
              <tr>
@@ -33,14 +33,14 @@
              </tr>
             <tr>
                 <td>
-                    @String.Format("Phone: {0}",emp.HomePhone)
+                    @String.Format("Phone: {0}",Model.HomePhone)
                     @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
                 </td>
                 <td>
             </tr>
             <tr>
                 <td>
-                    @String.Format("City: {0}",emp.City)
+                    @String.Format("City: {0}",Model.City)
                     @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
                 </td>
                 <td>
@@ -59,12 +59,12 @@
                     @using (Ajax.BeginForm("ShowOrders", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "tbl" },
                     new {@class = "form-horizontal", @role = "form", id="form"}))
                     {   
-                        <div id="btnShow" onclick="showOrders('@emp.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
+                        <div id="btnShow" onclick="showOrders('@Model.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
                         @*@Html.ActionLink("Show Orders", "ShowOrders", new { id=emp.EmployeeID }, new {@class="btn btn-info btn-xs"})*@
                     }
                 </td>
             </tr>
-        }
+        
     </tbody>
 </table>
     
