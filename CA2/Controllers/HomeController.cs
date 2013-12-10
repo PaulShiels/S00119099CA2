@@ -149,7 +149,14 @@ namespace CA2.Controllers
             //{
                 Order o = db.Orders.Find(id);
                 db.Orders.Remove(o);
-                //db.SaveChanges();
+                var orderDetails = from od in db.Order_Details
+                                   where od.OrderID == id
+                                   select od;
+            foreach(Order_Detail od in orderDetails)
+            {
+                db.Order_Details.Remove(od);
+            }
+                db.SaveChanges();
                 return RedirectToAction("Index");
             //}
             //catch

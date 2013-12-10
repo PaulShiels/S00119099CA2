@@ -142,7 +142,7 @@
 </div>
 
 <div style="visibility:hidden" id="dialog-confirm" title="Are you sure?">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These order will be permanently deleted and cannot be recovered. Are you sure?</p>
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These order will be permanently deleted and cannot be recovered. Are you sure?</p><br />
 </div>
 
 
@@ -156,8 +156,7 @@
             buttons: {
                 "Delete Order": function (id) {
                     $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("DeleteConfirmed")',
+                        url: '@Url.Action("Delete")',
                 data: { id: id }
                     });
                 },
