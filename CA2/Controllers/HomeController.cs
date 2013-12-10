@@ -145,8 +145,8 @@ namespace CA2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //try
-            //{
+            try
+            {
                 Order o = db.Orders.Find(id);
                 db.Orders.Remove(o);
                 var orderDetails = from od in db.Order_Details
@@ -158,11 +158,11 @@ namespace CA2.Controllers
             }
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
