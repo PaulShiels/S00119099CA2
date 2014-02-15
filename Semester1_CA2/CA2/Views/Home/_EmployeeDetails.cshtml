@@ -1,0 +1,208 @@
+﻿@model CA2.Employee
+
+
+
+<table id="tblCusts" class="table table-condensed" 
+       style="table-layout: fixed; width:280px; word-wrap: break-word; position:fixed">
+    @* Could use white-space:nowrap to avoid line wrap*@
+    <thead>
+        <tr>
+            <th style="width:90%">Employee Details</th>
+            @*<th style="width:35%">Boss</th>
+            <th style="width:5%"></th>*@
+        </tr>
+    </thead>
+    <tbody>
+@*        @foreach (var emp in Model)
+        {
+            *@<tr onclick="listOrders('@Model.FirstName');" style="cursor:pointer">
+                <td>
+                    @String.Format("Name: {0} {1}",Model.FirstName, Model.LastName)
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    @*@String.Format("Boss: {0} Make this a Name!! :)", emp.ReportsTo)*@
+                    @*@Html.DisplayFor(modelItem => @ViewBag.report)*@
+                    @*@String.Format("Boss: {0} {1}",@ViewBag.reportFname,@ViewBag.reportLname)*@
+                    @*@String.Format("Boss: {0}",@ViewBag.reportFname)*@
+                    
+                    
+                    @ViewBag.reportFname
+                </td>
+             </tr>
+            <tr>
+                <td>
+                    @String.Format("Phone: {0}",Model.HomePhone)
+                    @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    @String.Format("City: {0}",Model.City)
+                    @*@Html.DisplayFor(modelItem => (emp.HomePhone))*@
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="width:90%">
+                        <img src="~/Content/images/mrBean.jpeg" />
+                        @*Preferrably the link would be stored in the photo column in the employees table.*@
+                    </div>
+                </td>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    @using (Ajax.BeginForm("ShowOrders", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "tbl" },
+                    new {@class = "form-horizontal", @role = "form", id="form"}))
+                    {   
+                        <div id="btnShow" onclick="showOrders('@Model.EmployeeID');" class="btn btn-info btn-xs" style="cursor:pointer">Show Orders</div>
+                        @*@Html.ActionLink("Show Orders", "ShowOrders", new { id=emp.EmployeeID }, new {@class="btn btn-info btn-xs"})*@
+                    }
+                </td>
+            </tr>
+        
+    </tbody>
+</table>
+    
+<div id="testDiv"></div>
+
+
+<script>
+
+    function showOrders(id) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ShowOrders")',
+            data: { id: id },
+            success: function (data) {
+                $('#tbl').html(data);
+            }
+        });
+    }
+
+    $("#btnShow").click(function () {
+        $("#tblMain").fadeOut("slow", function () { $("#tblMain").fadeIn(3000); });
+    });
+
+    //$(document).ready(function () {
+        
+    //    alert("faded");
+    //    //$("#tblCusts").addClass('box_rotate box_transition');
+    //    // Animation complete.
+    //});
+
+    
+</script>
+
+
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleOfCourtesy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportsTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhotoPath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HireDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportsTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhotoPath)
+        </td>
+    </tr>
+}
+
+</table>*@
