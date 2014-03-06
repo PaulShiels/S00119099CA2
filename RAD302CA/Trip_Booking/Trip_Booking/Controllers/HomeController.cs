@@ -3,21 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Trip_booking.DAL;
+using Trip_booking.Models;
 
-namespace Trip_Booking.Controllers
+namespace Trip_booking.Controllers
 {
     public class HomeController : Controller
     {
+        private ITripRepository _repo;
+
+        public HomeController()
+        {
+
+        }
+
+        public HomeController(ITripRepository repo)
+        {
+            _repo = repo;
+        }
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+            int i = 0;
+            //i = _repo.GetAllTrips().Count();
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }

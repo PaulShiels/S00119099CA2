@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Trip_Booking
+namespace Trip_booking
 {
     public class RouteConfig
     {
