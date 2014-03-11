@@ -33,9 +33,9 @@ namespace Trip_booking.Migrations
             context.Trips.AddOrUpdate(
                 t => t.ID,
                 //new Trip { ID = 1, name = "Sahara Adventure", legs = 4, minimumGuests = 10 }
-                new Trip { ID = 1, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("2013/10/11"), endDate = Convert.ToDateTime("2013/10/21"), minimumGuests = 10 }
-                //new Trip { ID = 2, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 },
-                //new Trip { ID = 3, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 },
+                new Trip { ID = 1, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("2013/10/02"), endDate = Convert.ToDateTime("2013/10/12"), minimumGuests = 10 },
+                new Trip { ID = 2, name = "Tour Atlantic", legs = 4, startDate = Convert.ToDateTime("2014/11/09"), endDate = Convert.ToDateTime("2014/11/09"), minimumGuests = 10 },
+                new Trip { ID = 3, name = "Wild West Adventure", legs = 4, startDate = Convert.ToDateTime("2014/06/05"), endDate = Convert.ToDateTime("2014/06/05"), minimumGuests = 10 }
                 //new Trip { ID = 4, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 }
         );
 
@@ -50,7 +50,10 @@ namespace Trip_booking.Migrations
 
             context.Legs.AddOrUpdate(
                 l => l.ID,
-                new Leg { ID=1}
+                new Leg { ID = 1},
+                new Leg { ID = 2 },
+                new Leg { ID = 3 },
+                new Leg { ID = 4 }
                 );
 
         }

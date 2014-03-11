@@ -23,9 +23,9 @@ namespace Trip_booking.Controllers
         }
         public ActionResult Index()
         {
-            int i = 0;
-            i = _repo.GetAllTrips().Count();
-            return View();
+            //int i = 0;
+            //i = _repo.GetAllTrips().Count();
+            return View("Trips", _repo.GetAllTrips());
         }
 
         public ActionResult About()
