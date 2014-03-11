@@ -32,8 +32,8 @@ namespace Trip_booking.Migrations
 
             context.Trips.AddOrUpdate(
                 t => t.ID,
-                new Trip { ID = 1, name = "Sahara Adventure", legs = 4, minimumGuests = 10 }
-                //new Trip { ID = 1, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 },
+                //new Trip { ID = 1, name = "Sahara Adventure", legs = 4, minimumGuests = 10 }
+                new Trip { ID = 1, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("2013/10/11"), endDate = Convert.ToDateTime("2013/10/21"), minimumGuests = 10 }
                 //new Trip { ID = 2, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 },
                 //new Trip { ID = 3, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 },
                 //new Trip { ID = 4, name = "Sahara Adventure", legs = 4, startDate = Convert.ToDateTime("12/01/2013"), endDate = Convert.ToDateTime("12/02/2013"), minimumGuests = 10 }

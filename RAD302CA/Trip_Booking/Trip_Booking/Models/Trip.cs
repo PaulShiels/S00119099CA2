@@ -10,8 +10,8 @@ namespace Trip_booking.Models
         public int ID { get; set; }
         public int legs { get; set; }
         public string name { get; set; }
-        //public DateTime startDate { get; set; }
-        //public DateTime endDate { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
         public int minimumGuests { get; set; }
 
         public ICollection<Trip> trips { get; set; }
